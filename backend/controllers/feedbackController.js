@@ -1,10 +1,17 @@
 const Feedback = require('../models/feedbackModel');
+const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
+const User = require('../models/user')
+const logger = require('../utils/logger');
+const ApiKey = require('../models/apiKey');
+const { generateToken } = require('../utils/jwt');
 
 // @route   POST /api/feedback
 // @desc    Create new feedback
 // @access  Public
 const createFeedback = async (req, res) => 
 {
+  console.error("Post Feedback");
   const { customerID, customerEmail, feedbackSubject, feedbackMessage } = req.body;
 
   try 
@@ -20,7 +27,7 @@ const createFeedback = async (req, res) =>
     res.status(201).json(newFeedback);
   } catch (err) 
   {
-    console.error(err);
+    console.error(err.message);
     res.status(500).json({ message: 'Failed to create feedback' });
   }
 };

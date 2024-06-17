@@ -1,6 +1,31 @@
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
-const User = require('../models/user');
+const User = require('../models/user')
 const logger = require('../utils/logger');
+const ApiKey = require('../models/apiKey');
+const { generateToken } = require('../utils/jwt');
+
+
+// @route   POST /api/v1/users/generateApiKey
+// @desc    Generate a new API key
+// @access  Admin
+const generateApiKey = async (req, res) => 
+{
+  try 
+  {
+    const apiKey = crypto.randomBytes(16).toString('hex');
+    const newApiKey = new ApiKey({ key: apiKey });
+    console.error("Api Key");
+    console.error(newApiKey);
+
+    await newApiKey.save();
+    res.status(201).json({ apiKey });
+  } catch (err) 
+  {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to generate API key' });
+  }
+};
 
 // @route   POST /api/users/register
 // @desc    Register a new user
@@ -61,13 +86,14 @@ const loginUser = async (req, res) =>
   {
     // Check if user exists
     let user = await User.findOne({ email });
-    if (!user) 
+    if (!user || !(await bcrypt.compare(password, user.password))) 
     {
         logger.error(`Invalid user`, { email: email });
-        return res.status(400).json({ message: 'Invalid credentials' });
+        return res.status(401).json({ message: 'Invalid credentials' });
     }
+    const token = generateToken(user);
 
-    // Validate password
+    //Validate password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) 
     {
@@ -179,6 +205,7 @@ module.exports =
   loginUser,
   deleteUser,
   registerUser,
+  generateApiKey,
   getUserProfile,
   updateUserProfile,
 };

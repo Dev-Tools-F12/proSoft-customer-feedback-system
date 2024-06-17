@@ -7,7 +7,11 @@ const {
   updateFeedback,
   deleteFeedback,
 } = require('../controllers/feedbackController');
+const feedbackController = require('../controllers/feedbackController');
 
+const { authenticateAPIKey, authenticateToken } = require('../middleware/jwtAuth');
+
+router.use(authenticateAPIKey);
 /**
  * @swagger
  * tags:
@@ -41,7 +45,7 @@ const {
  *       500:
  *         description: Internal server error
  */
-router.post('/', createFeedback);
+router.post('/feedback', createFeedback);
 
 /**
  * @swagger
@@ -49,18 +53,16 @@ router.post('/', createFeedback);
  *   get:
  *     summary: Get all feedbacks
  *     responses:
- *       200:
- *         description: A list of feedbacks
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *       500:
- *         description: Internal server error
+ *          200:
+ *            description: A list of feedbacks
+ *            content:
+ *            application/json:
+ *            schema:
+ *            type: array
+ *          500:
+ *             description: Internal server error
  */
-router.get('/', getAllFeedbacks);
+router.get('/feedback', getAllFeedbacks);
 
 /**
  * @swagger
@@ -82,7 +84,7 @@ router.get('/', getAllFeedbacks);
  *       500:
  *         description: Internal server error
  */
-router.get('/:id', getFeedbackById);
+router.get('/feedback/:id', getFeedbackById);
 
 /**
  * @swagger
@@ -120,7 +122,7 @@ router.get('/:id', getFeedbackById);
  *       500:
  *         description: Internal server error
  */
-router.put('/:id', updateFeedback);
+router.put('/feedback/:id', updateFeedback);
 
 /**
  * @swagger
@@ -142,6 +144,6 @@ router.put('/:id', updateFeedback);
  *       500:
  *         description: Internal server error
  */
-router.delete('/:id', deleteFeedback);
+router.delete('/feedback/:id', deleteFeedback);
 
 module.exports = router;
