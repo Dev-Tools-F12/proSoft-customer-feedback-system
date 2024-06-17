@@ -135,3 +135,44 @@
 2024-06-17 06:02:36 error: User not found
 2024-06-17 06:02:47 info: DELETE /api/users/666faccf8adecc596b9cedbc4545
 2024-06-17 06:02:47 error: Cast to ObjectId failed for value "666faccf8adecc596b9cedbc4545" (type string) at path "_id" for model "User"
+2024-06-17 06:10:48 info: Server is running on port 3000
+2024-06-17 06:16:56 info: Server is running on port 3000
+2024-06-17 06:17:01 info: GET /api-docs/
+2024-06-17 06:17:01 info: GET /api-docs/swagger-ui.css
+2024-06-17 06:17:01 info: GET /api-docs/swagger-ui-bundle.js
+2024-06-17 06:17:01 info: GET /api-docs/swagger-ui-standalone-preset.js
+2024-06-17 06:17:01 info: GET /api-docs/swagger-ui-init.js
+2024-06-17 06:17:01 info: GET /api-docs/favicon-32x32.png
+2024-06-17 06:18:39 info: DELETE /api/users/666faf76213570373f60daed
+2024-06-17 06:18:39 info: User profile udate deleted successfully
+2024-06-17 06:18:44 info: DELETE /api/users/666faf76213570373f60daed
+2024-06-17 06:18:44 error: User not found
+2024-06-17 06:23:33 info: Server is running on port 3000
+2024-06-17 06:23:35 info: GET /api-docs/
+2024-06-17 06:23:35 info: GET /api-docs/swagger-ui.css
+2024-06-17 06:23:35 info: GET /api-docs/swagger-ui-bundle.js
+2024-06-17 06:23:35 info: GET /api-docs/swagger-ui-standalone-preset.js
+2024-06-17 06:23:35 info: GET /api-docs/swagger-ui-init.js
+2024-06-17 06:23:35 info: GET /api-docs/favicon-32x32.png
+2024-06-17 06:30:10 info: Server is running on port 3000
+2024-06-17 06:30:13 info: GET /api-docs/
+2024-06-17 06:30:14 info: GET /api-docs/swagger-ui.css
+2024-06-17 06:30:14 info: GET /api-docs/swagger-ui-bundle.js
+2024-06-17 06:30:14 info: GET /api-docs/swagger-ui-standalone-preset.js
+2024-06-17 06:30:14 info: GET /api-docs/swagger-ui-init.js
+2024-06-17 06:30:14 info: GET /api-docs/favicon-32x32.png
+2024-06-17 06:34:24 info: Server is running on port 3000
+2024-06-17 06:37:11 info: Server is running on port 3000
+2024-06-17 06:37:15 info: GET /api-docs/
+2024-06-17 06:37:15 info: GET /api-docs/swagger-ui.css
+2024-06-17 06:37:15 info: GET /api-docs/swagger-ui-standalone-preset.js
+2024-06-17 06:37:15 info: GET /api-docs/swagger-ui-bundle.js
+2024-06-17 06:37:15 info: GET /api-docs/swagger-ui-init.js
+2024-06-17 06:37:15 info: GET /api-docs/favicon-32x32.png
+2024-06-17 06:41:49 info: Server is running on port 3000
+2024-06-17 06:41:52 info: GET /api-docs/
+2024-06-17 06:41:52 info: GET /api-docs/swagger-ui.css
+2024-06-17 06:41:52 info: GET /api-docs/swagger-ui-bundle.js
+2024-06-17 06:41:52 info: GET /api-docs/swagger-ui-standalone-preset.js
+2024-06-17 06:41:52 info: GET /api-docs/swagger-ui-init.js
+2024-06-17 06:41:53 info: GET /api-docs/favicon-32x32.png
