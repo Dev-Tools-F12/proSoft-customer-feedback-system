@@ -5,20 +5,39 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const options = {
-  definition: {
+  swaggerDefinition: {
     openapi: '3.0.0',
     info: {
-      title: 'User Management API',
-      version: '1.0.0',
-      description: 'A simple Express API for user management',
+      title: process.env.SWAGGER_API_TITLE,
+      version: process.env.SWAGGER_API_VERSION,
+      description: process.env.SWAGGER_API_DESCRIPTION,
     },
     servers: [
       {
-        url: `http://localhost:${process.env.PORT || 3000}/api`,
+        url: `${process.env.SWAGGER_API_SCHEME}://${process.env.SWAGGER_API_HOST}${process.env.SWAGGER_API_BASEPATH}`,
+      },
+    ],
+    components: {
+      securitySchemes: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          name: 'x-api-key',
+        },
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [
+      {
+        ApiKeyAuth: [],
       },
     ],
   },
-  apis: ['./routes/*.js'], // Path to the API docs
+  apis: ['./routes/*.js'],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

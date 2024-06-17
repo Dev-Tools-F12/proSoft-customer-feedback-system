@@ -4,9 +4,17 @@ const {
     loginUser,
     deleteUser,
     registerUser,
+    generateApiKey,
     getUserProfile,
     updateUserProfile,
 } = require('../controllers/usersController');
+
+// const jwtAuth = require('../middleware/jwtAuth');
+// const adminAuth = require('../middleware/adminAuth');
+const { authenticateAPIKey, authenticateToken } = require('../middleware/jwtAuth');
+
+router.use(authenticateAPIKey);
+
 
 /**
  * @swagger
@@ -97,7 +105,7 @@ router.post('/register', registerUser);
  *       500:
  *         description: Internal server error
  */
-router.get('/profile/:userId', getUserProfile);
+router.get('/profile/:userId',authenticateToken , getUserProfile);
 
 // @route   PUT /api/users/profile/:userId
 // @desc    Update user profile by ID
@@ -136,7 +144,7 @@ router.get('/profile/:userId', getUserProfile);
  *       500:
  *         description: Internal server error
  */
-router.put('/profile/:userId', updateUserProfile);
+router.put('/profile/:userId', authenticateToken , updateUserProfile);
 
 // @route   DELETE /api/users/:userId
 // @desc    Delete user by ID
@@ -162,6 +170,8 @@ router.put('/profile/:userId', updateUserProfile);
  *       500:
  *         description: Internal server error
  */
-router.delete('/:userId', deleteUser);
+router.delete('/:userId', authenticateToken , deleteUser);
+
+// router.post('profile/generateApiKey', authenticateToken , adminAuth, generateApiKey);
 
 module.exports = router;
